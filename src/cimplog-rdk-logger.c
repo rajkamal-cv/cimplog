@@ -25,7 +25,8 @@
 #define DEBUG_INI_NAME		"/etc/debug.ini"
 #define MAX_BUF_SIZE 1024
 
-const char *__attribute__((weak)) rdk_logger_module_fetch(void);
+//const char *__attribute__((weak)) rdk_logger_module_fetch(void);
+const char *rdk_logger_module_fetch(void);
 static int init_done = 0;
 
 void __cimplog(const char *module, int level, const char *msg, ...)
@@ -38,9 +39,9 @@ void __cimplog(const char *module, int level, const char *msg, ...)
         rdk_logger_module = rdk_logger_module_fetch();
         if( NULL == rdk_logger_module )
         {
-            fprintf(stderr, "\nERROR: RDK Logger not integrated for this module !!!\n");
+            fprintf(stderr, "\nERROR: RDK Logger not integrated for this module : %s !!!\n",module);
             fprintf(stderr, " Provide cimplog method \"const char *rdk_logger_module_fetch(void)\" to get log prints !!\n");
-	          return; // Not using RDKLogger is an Error. Return!
+	          exit(1); // Not using RDKLogger is an Error. Return!
         }
         init_done = 1;
     }
