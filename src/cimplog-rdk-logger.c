@@ -74,7 +74,7 @@ void __cimplog(const char *module, int level, const char *msg, ...)
         }
 
         //RDK_LOG(_level[0x3 & level], rdk_logger_module, "%s: %s", module, buf);
-        fprintf(stderr, "\n%s()ERROR: No RDK Logger module : %s : buf : !!!\n",__func__,module,buf);
+        fprintf(stderr, "\n%s()ERROR: No RDK Logger module : %s : buf : %s !!!\n",__func__,module,buf);
     }
 
     return;
@@ -124,7 +124,7 @@ void __cimplog_rdk_generic(const char *rdk_logger_module, const char *module, in
             buf[nbytes] = '\0';
         }
         //RDK_LOG(_level[0x3 & level], rdk_logger_module, "%s: %s", module, buf);
-        fprintf(stderr, "\n%s()ERROR: No RDK Logger module : %s : buf : !!!\n",__func__,module,buf);
+        fprintf(stderr, "\n%s()ERROR: No RDK Logger module : %s : buf : %s !!!\n",__func__,module,buf);
     }
 
     return;
