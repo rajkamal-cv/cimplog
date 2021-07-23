@@ -28,7 +28,7 @@
 //const char *__attribute__((weak)) rdk_logger_module_fetch(void);
 const char *rdk_logger_module_fetch(void);
 static int init_done = 0;
-
+#error
 void __cimplog(const char *module, int level, const char *msg, ...)
 {
     static const char *rdk_logger_module = NULL;
