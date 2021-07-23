@@ -53,7 +53,7 @@ void __cimplog(const char *module, int level, const char *msg, ...)
     }
 #endif
     //else print to RDK Logger
-    static const rdk_LogLevel _level[] = { RDK_LOG_ERROR, RDK_LOG_INFO, RDK_LOG_DEBUG };
+    //static const rdk_LogLevel _level[] = { RDK_LOG_ERROR, RDK_LOG_INFO, RDK_LOG_DEBUG };
     va_list arg_ptr;
     char buf[MAX_BUF_SIZE];
     int nbytes;
@@ -104,7 +104,7 @@ void __cimplog_rdk_generic(const char *rdk_logger_module, const char *module, in
     }
 #endif
     //else print to RDK Logger
-    static const rdk_LogLevel _level[] = { RDK_LOG_ERROR, RDK_LOG_INFO, RDK_LOG_DEBUG };
+    //static const rdk_LogLevel _level[] = { RDK_LOG_ERROR, RDK_LOG_INFO, RDK_LOG_DEBUG };
     va_list arg_ptr;
     char buf[MAX_BUF_SIZE];
     int nbytes;
