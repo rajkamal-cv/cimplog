@@ -39,19 +39,19 @@ void __cimplog(const char *module, int level, const char *msg, ...)
         if( NULL == rdk_logger_module )
         {
             fprintf(stderr, "\nERROR: RDK Logger not integrated for this module : %s !!!\n",module);
-            fprintf(stderr, " Provide cimplog method \"const char *rdk_logger_module_fetch(void)\" to get log prints !!\n");
-	          exit(1); // Not using RDKLogger is an Error. Return!
+            fprintf(stderr, " ERROR: Provide cimplog method \"const char *rdk_logger_module_fetch(void)\" to get log prints !!\n");
+	          //exit(1); // Not using RDKLogger is an Error. Return!
         }
         init_done = 1;
     }
-
+#if 0
     if( NULL == rdk_logger_module )
     {
         //if RDK logger module is not defined, simple return - dont print.
         // used when calling module is not interested in log prints
         return;
     }
-
+#endif
     //else print to RDK Logger
     static const rdk_LogLevel _level[] = { RDK_LOG_ERROR, RDK_LOG_INFO, RDK_LOG_DEBUG };
     va_list arg_ptr;
@@ -73,7 +73,8 @@ void __cimplog(const char *module, int level, const char *msg, ...)
             buf[nbytes] = '\0';
         }
 
-        RDK_LOG(_level[0x3 & level], rdk_logger_module, "%s: %s", module, buf);
+        //RDK_LOG(_level[0x3 & level], rdk_logger_module, "%s: %s", module, buf);
+        fprintf(stderr, "\n%s()ERROR: No RDK Logger module : %s : buf : !!!\n",__func__,module,buf);
     }
 
     return;
@@ -94,14 +95,14 @@ void __cimplog_rdk_generic(const char *rdk_logger_module, const char *module, in
         RDK_LOGGER_INIT();
         init_done = 1;
     }
-
+#if 0
     if( NULL == rdk_logger_module )
     {
         //if RDK logger module is not defined, simple return - dont print.
         // used when calling module is not interested in log prints
         return;
     }
-
+#endif
     //else print to RDK Logger
     static const rdk_LogLevel _level[] = { RDK_LOG_ERROR, RDK_LOG_INFO, RDK_LOG_DEBUG };
     va_list arg_ptr;
@@ -122,7 +123,8 @@ void __cimplog_rdk_generic(const char *rdk_logger_module, const char *module, in
         {
             buf[nbytes] = '\0';
         }
-        RDK_LOG(_level[0x3 & level], rdk_logger_module, "%s: %s", module, buf);
+        //RDK_LOG(_level[0x3 & level], rdk_logger_module, "%s: %s", module, buf);
+        fprintf(stderr, "\n%s()ERROR: No RDK Logger module : %s : buf : !!!\n",__func__,module,buf);
     }
 
     return;
